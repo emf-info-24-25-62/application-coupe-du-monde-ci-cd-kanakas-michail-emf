@@ -151,7 +151,7 @@
         return "<div class='team'>$name</div>";
     }
 
-    // --- FORMULAIRE DE FILTRE ---
+    // --- FORMULAIRE DE FILTRE ----
     echo '<form method="get" style="margin-bottom: 20px;">';
     
     // Filtre Année
