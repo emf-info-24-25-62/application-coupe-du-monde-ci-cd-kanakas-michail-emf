@@ -178,7 +178,7 @@
     echo ' <a href="?">Réinitialiser</a>';
     echo '</form>';
 
-    // --- LOGIQUE D'AFFICHAGE ---
+    // --- LOGIQUE D'AFFICHAGE ----
     echo '<div class="grid">';
 
     $filterYear = $_GET['year'] ?? '';
