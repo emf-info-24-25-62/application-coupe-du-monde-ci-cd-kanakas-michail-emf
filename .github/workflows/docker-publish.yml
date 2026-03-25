@@ -1,0 +1,33 @@
+# Nom du workflow
+name: Docker CI/CD
+
+# Définit quand le workflow sera déclenché
+on:
+  push:
+    branches: [ "main" ]  # Déclenché lors d'un push sur la branche main
+  pull_request:
+    branches: [ "main" ]  # Déclenché lors d'une pull request vers main
+
+# Liste des tâches à exécuter
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Utilise la dernière version d'Ubuntu
+    steps:
+      # Récupère le code source du repository
+      - uses: actions/checkout@v3
+      
+      # Connexion au registre de conteneurs GitHub
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io  # Utilise GitHub Container Registry
+          username: ${{ github.actor }}  # Utilise l'utilisateur courant
+          password: ${{ secrets.GITHUB_TOKEN }}  # Utilise le token GitHub
+          
+      # Construction et publication de l'image Docker
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: .  # Contexte de build (répertoire courant)
+          push: true  # Active la publication de l'image
+          tags: ghcr.io/${{ github.repository }}:latest  # Tag de l'image
