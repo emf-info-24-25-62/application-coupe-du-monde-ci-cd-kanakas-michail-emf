@@ -103,6 +103,7 @@
 <div class="container">
 <?php
     $winners = [
+        2026 => ["?", "?"],
         2022 => ["Argentine", "France"],
         2018 => ["France", "Croatie"],
         2014 => ["Allemagne", "Argentine"],
